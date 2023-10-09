@@ -1,9 +1,13 @@
 package files;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 public class PayLoad {
 
 
-    public static String AddPlace(){
+    public static String AddPlace() {
         return "{\n" +
                 "    \"location\": {\n" +
                 "        \"lat\": -38.383494,\n" +
@@ -48,4 +52,14 @@ public class PayLoad {
                 "}";
     }
 
+
+    public static String AddBook(String isbn, String aisle){
+        String payload = "{\n" +
+                "    \"name\": \"Eduardito quiere comer un cevichito que tal como estas? xddxxd\",\n" +
+                "    \"isbn\": \""+isbn+"\",\n" +
+                "    \"aisle\": \""+aisle+"\",\n" +
+                "    \"author\": \"Eduardito\"\n" +
+                "}";
+        return payload;
+    }
 }
