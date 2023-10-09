@@ -1,8 +1,10 @@
 package basics;
 
 import files.PayLoad;
+import files.ReUsableMethods;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
+import org.testng.Assert;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
@@ -85,13 +87,16 @@ public class AddPlaceTest {
                 .response()
                 .asString();
 
-        JsonPath js1 = new JsonPath(getPlaceResponse);
+        JsonPath js1 = ReUsableMethods.rawToJson(getPlaceResponse);
+
+        // JsonPath js1 = new JsonPath(getPlaceResponse);
+
         String actualAddress = js1.getString("address");
         System.out.println(actualAddress);
 
         // Cucumber Junit, Testng
 
-
+        Assert.assertEquals(actualAddress,newAddress);
 
 
     }
